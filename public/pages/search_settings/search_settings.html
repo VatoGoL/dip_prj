@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="./search_settings.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>FindMeet</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="title">
+        <h1 class="title__title">FINDMEET</h1>
+        <h2 class="title__sub-title">Найди друга по общим интересам</h2>
+    </div>
+    <div class="wrapper">
+        <section class="settings">
+            <h3 class="settings__title">Критерии поиска</h3>
+
+            <form class="settings__form" action="../coice_chat/choice_chat.html">
+                <div class="settings__block">
+                    <h3 class="settings__sub-title">Пол:</h3>
+                    <div class="settings__radio-box">                   
+                        <input class="settings__radio" type="radio" name="gender" value="Мужской" />
+                        <span class="settings__span-text">Мужской</span> 
+                        <input class="settings__radio" type="radio" name="gender" value="Женский" /> 
+                        <span class="settings__span-text">Женский</span> 
+                        <input class="settings__radio" type="radio" name="gender" value="Другое" />
+                        <span class="settings__span-text">Другое</span> 
+                    </div>
+                </div>
+                
+                <div class="settings__block">
+                    <h3 class="settings__sub-title">Возраст:</h3>
+                    <div class="settings__body">
+                        <input class="settings__text-age" type="text" name="age-min" min="0" max="98" placeholder="От" />
+                        <span class="settings__tire">-</span>
+                        <input class="settings__text-age" type="text" name="age-max" min="1" max="99" placeholder="До" />
+                    </div>
+                </div>
+                
+                <div class="settings__block">
+                    <h3 class="settings__sub-title">Город:</h3>
+                    <div class="settings__body">
+                        <input class="settings__text" type="text" name="age-min" min="0" max="98" placeholder="Наименование" />
+                    </div>
+                </div>
+                <span class="settings__submit-span">
+                    <input class="settings__submit" type="submit">
+                </span>
+                
+            </form>
+        </section>
+    </div>
+    <div class="decoration decoration-one">
+        <img class="decoration__img" src="../../resources/search_settings_page/balls.png" alt="Декорация заднего фона" />
+    </div>
+    <div class="decoration decoration-two">
+        <img class="decoration__img" src="../../resources/search_settings_page/balls.png" alt="Декорация заднего фона" />
+    </div>
+  </body>
+</html>
