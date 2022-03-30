@@ -13,11 +13,6 @@ html, body {
     margin: 0;
     min-height:100%;
     overflow:hidden;
-}
-a {
-    text-decoration: none;
-}
-body {
     background-color:#E2D3C0;
 }
 .title{
@@ -116,7 +111,7 @@ body {
     font-weight: 400;
     font-size: 1.3vw;
 }
-ul > .card__info-text {
+.card__info-text-li {
     line-height: 4.5vh;
 }
 .card__chat{
