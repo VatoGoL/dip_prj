@@ -21,7 +21,7 @@ html, body {
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 3vw;
-    font-family:'MAC';
+    font-family:'MAC', sans-serif;
     color:#ffffff;
 }
 .wrapper{

@@ -55,7 +55,7 @@ html, body {
     border-radius:2%;
 
     background-color:#885041;
-    box-shadow: 0px 20px 30px black;
+    box-shadow: 0 20px 30px black;
 }
 .settings__title, .settings__form {
     color: #FFFFFF;

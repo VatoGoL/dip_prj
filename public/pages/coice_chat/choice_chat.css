@@ -21,7 +21,7 @@ html, body {
     left:3vw;
 }
 .title__title, .title__sub-title{
-    font-family: 'MAC';
+    font-family: 'MAC', sans-serif;
 }
 .title__title{
     margin:0;
@@ -40,7 +40,7 @@ html, body {
     z-index:0;
     left:60vw;
     top: 3vh;
-    font-family: 'MAC';
+    font-family: 'MAC', sans-serif;
     font-size: 3vw;
     color:#35312e;
 }
@@ -77,7 +77,7 @@ html, body {
 
     border-radius: 10px;
     background-color: #885041;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0 0 10px black;
 }
 .card__image-box{
     width: 12vw;
