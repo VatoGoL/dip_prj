@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="../src/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -17,10 +18,16 @@
       <h1 class="title">FINDMEET</h1>
       <h2 class="sub-title">Найди друга по общим интересам</h2>
     <div class="wrapper">
-      <a class="start" href="./pages/search_settings/search_settings.html">
+      <span id="index" class="start" href="https://oauth.vk.com/authorize?client_id=8145709&display=page&scope=friends&redirect_uri=http://localhost:3000&v=5.52">
         <p class="start__text-one">Авторизация</p> 
         <p class="start__text-two">VK</p>
-      </a>
+      </span>
+      <span class="line"></span>
+      <form class="entry" method="get" action="./pages/search_settings/search_settings.html">
+        <input type="text" class="entry__input" name="token" id="token" placeholder="Введите токен">
+        <input type="submit" class="entry__submit" id="submit" value="Продолжить">
+        <a class="entry__text" href="./pages/read_me/read_me.html">Что такое токен?</a>
+      </form>
     </div>
     <div class="decoration one">
       <img class="decoration__img" src="resources/index_page/balls_one.png" alt="Декоративное изображение"/>
@@ -28,5 +35,9 @@
     <div class="decoration two">
       <img class="decoration__img" src="resources/index_page/balls_two.png" alt="Декоративное изображение"/>
     </div>
+
+
+    <script src="./scripts/index.js"></script>
+
   </body>
 </html>

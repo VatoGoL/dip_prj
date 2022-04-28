@@ -14,11 +14,11 @@ html,body {
 
 .title{
     position: relative;
-    top:13vh;
+    top:5vh;
     left:1vw;
     
     font-family: 'MAC', sans-serif;
-    font-size: 159px;
+    font-size: 16.79vh;
     text-align: center;
 
     color: #ffffff;
@@ -27,10 +27,10 @@ html,body {
 }
 .sub-title{
     position: relative;
-    top:12vh;
+    top:5vh;
 
     font-family: 'MAC', sans-serif;
-    font-size: 42px;
+    font-size: 4.5vh;
     text-align: center;
     
     margin:0;
@@ -41,19 +41,21 @@ html,body {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
+    flex-direction: column;
 }
 .start{
+    cursor: pointer;
     position: absolute;
-    top:56vh;
+    top:33.5vh;
 
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
-    width: 36vh;
-    height: 36vh;
+    width: 30vh;
+    height: 30vh;
     
     background-image: url('../public/resources/index_page/start_button.png');
     background-repeat: no-repeat;
@@ -69,7 +71,7 @@ html,body {
     margin:0;
     margin-top:5vh;
     font-family: 'MAC', sans-serif;
-    font-size: 45px;
+    font-size: 4vh;
 }
 .start__text-two {
     width:100%;
@@ -77,7 +79,68 @@ html,body {
     margin: 0;
     margin-top:2vh;
     font-family: 'MAC', sans-serif;
-    font-size: 63px;
+    font-size: 7vh;
+}
+.line{
+    width: 33vw;
+    height: 0.3vh;
+
+    border-radius: 4vh;
+    background-color: #35312e;
+
+    position: absolute;
+    bottom: 33vh;
+}
+.entry {
+    position: absolute;
+    bottom: 13vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 17vh;
+}
+.entry__input{
+    width: 30vw;
+    height: 4vh;
+    margin: 0 2px;
+
+    border-radius:10px/10px;
+    background-color:#5e5752;
+    color: #ffffff;
+    border: solid 2px #35312e;
+
+    font-family: 'PointerOne-regular', 'Times New Roman', Times, serif;
+    font-size: 1.9vh;
+    padding-left: 0.5vw;
+}
+.entry__submit{
+    margin: 0.5vh;
+    height: 7.3vh;
+    width: 15.5vw;
+    
+    border-radius: 5px/12px;
+    
+    background-color: #f9e7db;
+
+    border: solid 4px #35312e;
+
+    text-align: center;
+    font-family: 'MAC', sans-serif;
+    font-size: 2.8vh;
+    letter-spacing: 0.05vw;
+    font-weight:600;
+}
+.entry__submit:hover {
+    cursor: pointer;
+}
+.entry__text {
+    font-size:2vh; 
+    text-decoration: none;
+
+    color:#35312e;
 }
 
 .decoration{
@@ -97,19 +160,4 @@ html,body {
     position: absolute;
     top: 66vh;
     left: 68vw;
-}
-
-@media screen and (max-width:1100px){
-    .start__text-one{
-        font-size: 35px;
-    }
-    .start__text-two{
-        font-size: 53px;
-    }
-    .tilte{
-        font-size: 149px;
-    }
-    .sub-title{
-        font-size: 32px;
-    }
 }

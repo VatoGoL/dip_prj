@@ -179,6 +179,14 @@ html, body {
     cursor:pointer;
     
 }
+.settings__remark{
+    color:#ffffff;
+    opacity: 70%;
+    margin: 0.7vh;
+    font-weight: 500;
+    font-size: 2vh;
+    font-family: 'PointerOne-regular';
+}
 
 
 .decoration {

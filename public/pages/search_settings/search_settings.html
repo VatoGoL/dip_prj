@@ -22,7 +22,7 @@
         <section class="settings">
             <h3 class="settings__title">Критерии поиска</h3>
 
-            <form class="settings__form" action="../coice_chat/choice_chat.html">
+            <form class="settings__form" action="../choice_chat/choice_chat.html" method="get">
                 <div class="settings__block">
                     <h3 class="settings__sub-title">Пол:</h3>
                     <div class="settings__radio-box">                   
@@ -38,17 +38,19 @@
                 <div class="settings__block">
                     <h3 class="settings__sub-title">Возраст:</h3>
                     <div class="settings__body">
-                        <input class="settings__text-age" type="text" name="age-min" min="0" max="98" placeholder="От" />
+                        <input class="settings__text-age" type="number" name="age-min" id="age-min" min="1" max="98" placeholder="От" />
                         <span class="settings__tire">-</span>
-                        <input class="settings__text-age" type="text" name="age-max" min="1" max="99" placeholder="До" />
+                        <input class="settings__text-age" type="number" name="age-max" id="age-max" min="2" max="99" placeholder="До" />
                     </div>
+                    <span class="settings__remark">*Оставте пустым если возраст не важен</span>
                 </div>
                 
                 <div class="settings__block">
                     <h3 class="settings__sub-title">Город:</h3>
                     <div class="settings__body">
-                        <input class="settings__text" type="text" name="age-min" min="0" max="98" placeholder="Наименование" />
+                        <input class="settings__text" type="text" id="city" name="city" placeholder="Наименование" />
                     </div>
+                    <span class="settings__remark">*Оставте пустым если населенный пукт не важен</span>
                 </div>
                 <span class="settings__submit-span">
                     <input class="settings__submit" type="submit">
@@ -63,5 +65,6 @@
     <div class="decoration decoration-two">
         <img class="decoration__img" src="../../resources/search_settings_page/balls.png" alt="Декорация заднего фона" />
     </div>
+    <script type="text/javascript" src="../../scripts/search_settings.js"></script>
   </body>
 </html>
