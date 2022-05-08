@@ -1,4 +1,8 @@
-
+/**
+ * @autor Иван
+ * Перенапаравляем пользователя на страницу получения токена
+ * при нажатии на "кнопку"
+*/
 let log_but = document.getElementById("index");
 if(log_but !== undefined) {
     log_but.addEventListener("click",()=>{
@@ -10,16 +14,17 @@ if(log_but !== undefined) {
 }
 
 let submit = document.getElementById("submit");
-
+/*
+ * @autor Иван
+ * Проверяяет введен ли токен в форму, чтобы продолжить работу с сайта
+*/
 submit.addEventListener("click", (event) => { 
     let token = document.getElementById("token");
     if(token["value"] === ""){
         event.preventDefault();
         alert("Введите токен для продолжения");  
     }
-})
-
-/*http://localhost:3000/pages/search_settings/search_settings.html*/ 
+});
 
 
 

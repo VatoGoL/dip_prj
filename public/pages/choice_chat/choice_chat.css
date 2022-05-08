@@ -112,7 +112,8 @@ html, body {
     font-size: 1.3vw;
 }
 .card__info-text-li {
-    line-height: 4.5vh;
+    line-height: 2.5vh;
+    font-size: 2vh;
 }
 .card__chat{
     display: flex;
@@ -138,11 +139,21 @@ html, body {
     font-weight: 600;
     letter-spacing: 2px;
 }
+.notification {
+    position: absolute;
+    top: 13vh;
+    left: 10vw;
+    font-family:'PointerOne-regular', sans-serif;
+    font-size: 3vh;
+    font-weight: 600;
+}
 
 .card__start-chat:hover{
     cursor:pointer;
 }
-
+.card__none {
+    display: none;
+}
 
 
 @media screen and (max-width:1050px){
