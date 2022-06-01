@@ -34,7 +34,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+/**
+ * @autor Иван
+ * @class
+*/
 var Card = /** @class */ (function () {
+    /**
+     * @constructor
+     * @param {number} person_id - id человека
+     * @param {string} name
+     * @param {string} surname
+     * @param {string} groups
+     * @param {string} photo_url
+     */
     function Card(person_id, name, surname, groups, photo_url) {
         if (photo_url === void 0) { photo_url = ""; }
         this.person_id = person_id;
@@ -45,15 +57,32 @@ var Card = /** @class */ (function () {
         this.photo_url = photo_url;
         Card.count++;
     }
+    /**
+     * @this {Card}
+     * @returns {number} - Колличество объектов класса Card
+     */
     Card.getCount = function () {
         return Card.count;
     };
+    /**
+     * @this {Card}
+     * @returns {number} - Уникальный номер объекта класса Card
+     */
     Card.prototype.getId = function () {
         return this.id;
     };
+    /**
+     * @this {Card}
+     * @returns {number} - Получение vk id пользователя привязанного к объекту типа Card
+     */
     Card.prototype.getPersonId = function () {
         return this.person_id;
     };
+    /**
+     * Функция составляет html объект карточки человека и встраивает его в страницу
+     * @this {Card}
+     * @returns {number} - true карточка отрисована
+     */
     Card.prototype.drawCard = function () {
         var create = true;
         var card = " <div class=\"card\">\n                        <div class=\"card__image-box\">\n                            <img class=\"card__image\" src=\"".concat(this.photo_url, "\" alt=\"\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C ").concat(this.id, "\"/>\n                        </div>\n                        <div class=\"card__info-box\">\n                            <p class=\"card__info-name card__text-centr\">").concat(this.name, " ").concat(this.surname, "</p>\n                            <h4 class=\"card__info-text card__text-centr\">\u0427\u0442\u043E \u0443 \u0432\u0430\u0441 \u043E\u0431\u0449\u0435\u0433\u043E?</h4>\n                            <p class=\"card__info-title card__s\">\u0421\u043E\u043E\u0431\u0449\u0435\u0441\u0442\u0432\u043E:</p>\n                            <ul class=\"card__ul\">");
@@ -69,13 +98,24 @@ var Card = /** @class */ (function () {
         var temp = document.getElementsByClassName('card__none');
         temp[this.id]["value"] = this.person_id;
     };
+    /** @member {number} */
     Card.count = 0;
     return Card;
 }());
-//Функция для генерации случайного числа от 0 до max взята с сайта mdn
+/**
+ * Функция для генерации случайного числа от 0 до max взята с сайта mdn
+ * @function
+ * @param {number} max - число до которого нужно сгенерировать случайное значение
+ * @returns Возвращается сгенерированное случайное значение
+ */
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+/**
+ * Функция для чтения определенного куки взята со страницы https://learn.javascript.ru/cookie
+ * @param name - Название поля куки
+ * @returns - Возвращает значение поля куки
+ */
 function getCookie(name) {
     var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
     return matches ? decodeURIComponent(matches[1]) : undefined;
@@ -84,7 +124,7 @@ function getCookie(name) {
 var search = new URLSearchParams(document.location.search);
 var code = search.get("token");
 var old_code = getCookie("code");
-//Проверка на то что это новый код
+//Проверка на то что это новый токен
 if (typeof (old_code) !== undefined) {
     if (old_code !== code) {
         var date = new Date(86400 - Date.now());
@@ -94,9 +134,12 @@ if (typeof (old_code) !== undefined) {
 }
 var max_future_friends = 3;
 var max_members = 100;
-/*let card_1 = new Card("Анатолий", "Батонов", ["Мемуары ценителей научных мемов","Cut the Crap"], "../../resources/choise-chat/one.png");*/
 var token = document.cookie.slice(5); //"code=" - 5 символов
 var url = "/method/" + "groups.get?" + "&access_token=" + token + "&v=5.131";
+/**
+ * Получение групп пользователя
+ * @returns промис с массивом групп
+ */
 var fGroup = fetch(url, {
     method: 'GET',
     headers: {
@@ -110,7 +153,10 @@ var fGroup = fetch(url, {
     return data["response"]["items"];
 });
 fGroup.then(function (data) {
-    //Получаем колличество участников групп
+    /**
+     * @function
+     * @returns Колличество участников групп и сами группы
+     */
     function getCountMembers() {
         return __awaiter(this, void 0, void 0, function () {
             var r, i, group_id, _a, _b;
@@ -146,63 +192,51 @@ fGroup.then(function (data) {
             });
         });
     }
+    /**
+     * Функция выполняет запрос и получает участников выбранных нами сообществ
+     * из них выбирает человека и возвращает массив с группой и выбранным человеком
+     * @function
+     * @param {number[][]} count - массив с группами
+     * @returns
+     */
     function getMembers(count) {
         return __awaiter(this, void 0, void 0, function () {
-            var r, _loop_1, out_j_1, j;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var r, j, i, _a, _b;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         r = [[], []];
-                        _loop_1 = function (j) {
-                            var i, _b, _c;
-                            return __generator(this, function (_d) {
-                                switch (_d.label) {
-                                    case 0:
-                                        i = j;
-                                        if (count[1][i] < max_members) {
-                                            url = "/method/" + "groups.getMembers?" +
-                                                "group_id=" + count[0][i] +
-                                                "&count=" + count[1][i] +
-                                                "&access_token=" + token + "&v=5.131";
-                                        }
-                                        else {
-                                            url = "/method/" + "groups.getMembers?" +
-                                                "group_id=" + count[0][i] +
-                                                "&offset=" + Math.floor(count[1][i] / max_members) +
-                                                "&count=" + max_members +
-                                                "&access_token=" + token + "&v=5.131";
-                                        }
-                                        r[0][i] = count[0][i];
-                                        _b = r[1];
-                                        _c = i;
-                                        return [4 /*yield*/, fetch(url).then(function (response) {
-                                                return response.json();
-                                            })
-                                                .then(function (data) {
-                                                if (data["response"] !== undefined) {
-                                                    var result = data["response"]["items"];
-                                                    return result[getRandomInt(result.length)];
-                                                }
-                                                else {
-                                                    j--;
-                                                }
-                                            })];
-                                    case 1:
-                                        _b[_c] = _d.sent();
-                                        out_j_1 = j;
-                                        return [2 /*return*/];
-                                }
-                            });
-                        };
                         j = 0;
-                        _a.label = 1;
+                        _c.label = 1;
                     case 1:
                         if (!(j < max_future_friends)) return [3 /*break*/, 4];
-                        return [5 /*yield**/, _loop_1(j)];
+                        i = j;
+                        if (count[1][i] < max_members) {
+                            url = "/method/" + "groups.getMembers?" +
+                                "group_id=" + count[0][i] +
+                                "&count=" + count[1][i] +
+                                "&access_token=" + token + "&v=5.131";
+                        }
+                        else {
+                            url = "/method/" + "groups.getMembers?" +
+                                "group_id=" + count[0][i] +
+                                "&offset=" + Math.floor(count[1][i] / max_members) +
+                                "&count=" + max_members +
+                                "&access_token=" + token + "&v=5.131";
+                        }
+                        r[0][i] = count[0][i];
+                        _a = r[1];
+                        _b = i;
+                        return [4 /*yield*/, fetch(url).then(function (response) {
+                                return response.json();
+                            })
+                                .then(function (data) {
+                                var result = data["response"]["items"];
+                                return result[getRandomInt(result.length)];
+                            })];
                     case 2:
-                        _a.sent();
-                        j = out_j_1;
-                        _a.label = 3;
+                        _a[_b] = _c.sent();
+                        _c.label = 3;
                     case 3:
                         j++;
                         return [3 /*break*/, 1];
@@ -213,6 +247,10 @@ fGroup.then(function (data) {
             });
         });
     }
+    /**
+     * Создание элементов класса типа Card из полученной информации
+     * @param {number[][]} data - [0] id группы /[1] id человека
+     */
     function createFriend(data) {
         return __awaiter(this, void 0, void 0, function () {
             var result, i, gr_name, person, friends, i;
@@ -261,7 +299,7 @@ fGroup.then(function (data) {
                             friends[i] = new Card(result[i]["friend_id"], result[i]["friend_firstname"], result[i]["friend_lastname"], result[i]["group_name"], result[i]["friends_photo"]);
                             friends[i].drawCard();
                         }
-                        document.getElementsByClassName("notification")[0].innerHTML = "Если не нравятся подобранные люди, нажми f5!";
+                        document.getElementsByClassName("notification")[0].textContent = "Если не нравятся подобранные люди, нажми f5!";
                         return [2 /*return*/];
                 }
             });
@@ -281,5 +319,3 @@ fGroup.then(function (data) {
         createFriend(data);
     });
 });
-//let code: string = document.location.search
-/* https://htmlweb.ru/geo/api_get_data.php */

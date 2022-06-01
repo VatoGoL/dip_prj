@@ -103,7 +103,6 @@ class Card {
 }
 
 /**
- * Функция для генерации случайного числа от 0 до max взята с сайта mdn
  * @function
  * @param {number} max - число до которого нужно сгенерировать случайное значение 
  * @returns Возвращается сгенерированное случайное значение
@@ -131,9 +130,10 @@ let code: string = search.get("token");
 let old_code = getCookie("code");
 
 //Проверка на то что это новый токен
-if(typeof(old_code) !== undefined) {
+if(old_code !== undefined) {
     if(old_code !== code){
-        let date: Date = new Date(86400 - Date.now());
+        const oneDay = 86400;
+        let date: Date = new Date(oneDay - Date.now());
         let time: string = date.toISOString();
 
         document.cookie = encodeURIComponent("code") + "=" +  encodeURIComponent(code) + "; path=/" + ";max-age="+encodeURIComponent(time) + ";";
@@ -218,15 +218,9 @@ fGroup.then( (data) => {
             r[1][i] = await fetch(url).then((response)=>{ 
                 return response.json();
             })
-            .then((data)=>{
-                if(data["response"] !== undefined){
-                    let result = data["response"]["items"];
-                    return result[getRandomInt(result.length)];
-                }
-                else{
-                    j--;
-                }
-                
+            .then((data)=>{             
+                let result = data["response"]["items"];
+                return result[getRandomInt(result.length)];
             });
             
         };
@@ -281,7 +275,7 @@ fGroup.then( (data) => {
                                   result[i]["friends_photo"]);
             friends[i].drawCard();
         }
-        document.getElementsByClassName("notification")[0].innerHTML = "Если не нравятся подобранные люди, нажми f5!";
+        document.getElementsByClassName("notification")[0].textContent = "Если не нравятся подобранные люди, нажми f5!";
     }
 
 

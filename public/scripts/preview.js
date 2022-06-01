@@ -1,3 +1,8 @@
+/**
+ * Функция для чтения определенного куки взята со страницы https://learn.javascript.ru/cookie
+ * @param name - Название поля куки
+ * @returns - Возвращает значение поля куки
+ */
 function getCookie(name) {
     var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
     return matches ? decodeURIComponent(matches[1]) : undefined;
@@ -13,36 +18,41 @@ var url = "/method/" + "users.get?"
     + "&name_case=nom"
     + "&access_token=" + token
     + "&v=5.131";
+/**
+ * Подкгрузка дополнительной информации об аккаунте
+*/
 fetch(url).then(function (response) { return response.json(); })
     .then(function (data) {
     console.log(data["response"][0]);
     if (data["response"][0]["last_name"] !== undefined) {
-        document.getElementById("surname").innerHTML = data["response"][0]["last_name"];
+        // document.getElementById("surname").innerHTML = data["response"][0]["last_name"];
+        document.getElementById("surname").textContent = data["response"][0]["last_name"];
     }
     if (data["response"][0]["first_name"] !== undefined) {
-        document.getElementById("name").innerHTML = data["response"][0]["first_name"];
+        //document.getElementById("name").innerHTML = data["response"][0]["first_name"];
+        document.getElementById("name").textContent = data["response"][0]["first_name"];
     }
     if (data["response"][0]["bdate"] !== undefined) {
-        document.getElementById("bday").innerHTML = data["response"][0]["bdate"];
+        document.getElementById("bday").textContent = data["response"][0]["bdate"];
     }
     if (data["response"][0]["status"] !== undefined) {
-        document.getElementById("status").innerHTML = data["response"][0]["status"];
+        document.getElementById("status").textContent = data["response"][0]["status"];
     }
     if (data["response"][0]["about"] !== undefined) {
-        document.getElementById("about").innerHTML = data["response"][0]["about"];
+        document.getElementById("about").textContent = data["response"][0]["about"];
     }
     if (data["response"][0]["city"] !== undefined) {
-        document.getElementById("city").innerHTML = data["response"][0]["city"]["title"];
+        document.getElementById("city").textContent = data["response"][0]["city"]["title"];
     }
     if (data["response"][0]["education"] !== undefined) {
-        document.getElementById("education").innerHTML = data["response"][0]["education"]["university_name"];
+        document.getElementById("education").textContent = data["response"][0]["education"]["university_name"];
     }
     if (data["response"][0]["sex"] !== undefined) {
         if (data["response"][0]["sex"] === 1) {
-            document.getElementById("sex").innerHTML = "Женский";
+            document.getElementById("sex").textContent = "Женский";
         }
         else if (data["response"][0]["sex"] === 2) {
-            document.getElementById("sex").innerHTML = "Мужской";
+            document.getElementById("sex").textContent = "Мужской";
         }
     }
     if (data["response"][0]["photo_200"] !== undefined) {
@@ -50,6 +60,9 @@ fetch(url).then(function (response) { return response.json(); })
     }
     document.getElementById("next").setAttribute("href", "https://vk.com/im?sel=".concat(person_id));
 });
+/**
+ * Подкгрузка дополнительной информации об группах пользователя
+*/
 url = "/method/" + "groups.get?"
     + "user_id=" + person_id
     + "&count=" + count_group
