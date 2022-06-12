@@ -131,6 +131,12 @@ if (typeof (old_code) !== undefined) {
         var time = date.toISOString();
         document.cookie = encodeURIComponent("code") + "=" + encodeURIComponent(code) + "; path=/" + ";max-age=" + encodeURIComponent(time) + ";";
     }
+    else{
+        console.log("code = " + code);
+        console.log("oldcode = " + old_code);
+    }
+    console.log("code = " + code);
+        console.log("oldcode = " + old_code);
 }
 var max_future_friends = 3;
 var max_members = 100;
